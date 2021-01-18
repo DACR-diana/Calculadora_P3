@@ -56,6 +56,7 @@
 		24C3146A25B5019200505276 /* Calculadora_Diana743_Diogo20349 */ = {
 			isa = PBXGroup;
 			children = (
+				24C3148725B5245D00505276 /* key_sound.mp3 */,
 				24C3148625B5242D00505276 /* Sounds */,
 				24C3148125B5174E00505276 /* ViewControllers */,
 				24C3146B25B5019200505276 /* AppDelegate.swift */,
@@ -78,7 +79,6 @@
 		24C3148625B5242D00505276 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				24C3148725B5245D00505276 /* key_sound.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";

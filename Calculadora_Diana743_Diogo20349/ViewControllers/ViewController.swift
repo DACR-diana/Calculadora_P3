@@ -28,7 +28,7 @@ class ViewController: UIViewController, AVAudioPlayerDelegate {
     
     // Variáveis para o som do click
     var audioPlayer : AVAudioPlayer!
-    let clickSound = Bundle.main.url(forResource: "Sounds/key_sound", withExtension: "mp3")
+    let clickSound = Bundle.main.url(forResource: "key_sound", withExtension: "mp3")
     
     
     // Função para limpar o resultado
