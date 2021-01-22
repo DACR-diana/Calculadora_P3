@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24BF1F0B25BA93FA0065BFD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BF1F0A25BA93FA0065BFD0 /* ViewController.swift */; };
 		24C3146C25B5019200505276 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C3146B25B5019200505276 /* AppDelegate.swift */; };
 		24C3147525B5019200505276 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C3147325B5019200505276 /* Main.storyboard */; };
 		24C3147725B5019F00505276 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24C3147625B5019F00505276 /* Assets.xcassets */; };
 		24C3147A25B5019F00505276 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C3147825B5019F00505276 /* LaunchScreen.storyboard */; };
-		24C3148525B51E5F00505276 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C3148425B51E5F00505276 /* ViewController.swift */; };
 		24C3148825B5245D00505276 /* key_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24C3148725B5245D00505276 /* key_sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24BF1F0A25BA93FA0065BFD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24C3146825B5019200505276 /* Calculadora_Diana743_Diogo20349.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculadora_Diana743_Diogo20349.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C3146B25B5019200505276 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24C3147425B5019200505276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		24C3147625B5019F00505276 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		24C3147925B5019F00505276 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24C3147B25B5019F00505276 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		24C3148425B51E5F00505276 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24C3148725B5245D00505276 /* key_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = key_sound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,22 +58,14 @@
 			children = (
 				24C3148725B5245D00505276 /* key_sound.mp3 */,
 				24C3148625B5242D00505276 /* Sounds */,
-				24C3148125B5174E00505276 /* ViewControllers */,
 				24C3146B25B5019200505276 /* AppDelegate.swift */,
 				24C3147325B5019200505276 /* Main.storyboard */,
 				24C3147625B5019F00505276 /* Assets.xcassets */,
 				24C3147825B5019F00505276 /* LaunchScreen.storyboard */,
 				24C3147B25B5019F00505276 /* Info.plist */,
+				24BF1F0A25BA93FA0065BFD0 /* ViewController.swift */,
 			);
 			path = Calculadora_Diana743_Diogo20349;
-			sourceTree = "<group>";
-		};
-		24C3148125B5174E00505276 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				24C3148425B51E5F00505276 /* ViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		24C3148625B5242D00505276 /* Sounds */ = {
@@ -155,7 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C3148525B51E5F00505276 /* ViewController.swift in Sources */,
+				24BF1F0B25BA93FA0065BFD0 /* ViewController.swift in Sources */,
 				24C3146C25B5019200505276 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
