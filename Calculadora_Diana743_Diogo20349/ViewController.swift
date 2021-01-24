@@ -7,19 +7,18 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
 
     @IBOutlet weak var displayResult: UILabel!
     
     // Declaração e inicialização de variáveis
-    var previousNum : Double = 0
-    var currentNumber : Double = 0
-    var preTag = "+"
-    let tagList = ["+","-","*","/"]
-    var decimal : Bool = false
+    var actualNumber : Double = 0
+    var formerNumber : Double = 0
+    var prevOperation="="
     
-    
+    var player = AVAudioPlayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,69 +28,116 @@ class ViewController: UIViewController {
     // Função para guardar o valor do número selecionado
     @IBAction func InputClick(_ sender: UIButton) {
         
-        if (displayResult.text! == "0" || displayResult.text! == "+" || displayResult.text! == "-" || displayResult.text! == "*" || displayResult.text! == "/"  ) && !(sender.tag == 0) && !(sender.tag==100){
-            displayResult.text = String(sender.tag)
+        KeySound()
+        
+        
+        // Se o valor que está na label do display for un dos caracteres abaixo
+        // significa que é um novo calculo, logo o ecra mostra o número selecionado
+        
+      
+        if (displayResult.text == "/" || displayResult.text == "*" || displayResult.text == "+" || displayResult.text == "-" || displayResult.text == "0"  ) && !(sender.tag == 0){
+            displayResult.text = String(sender.tag) // atribui o valor do número selecionado à variavel "displayResult" para que seja mostrada no ecra
         }
-        else if sender.tag == 100 && !decimal{
-            decimal = true
-            displayResult.text = displayResult.text! + "."
-        }
-        else if !(displayResult.text! == "0") && !(sender.tag == 100){
+        else if !(displayResult.text == "0"){
+            // Se cair nesta condição significa que o user ainda se encontra a escrever o número que pretence inserir no calculo, ou seja, adiciona ao ecra o número selecionado
             displayResult.text = displayResult.text! + String(sender.tag)
         }
     }
     
-    
+    // Limpar o ecra
     @IBAction func ClearResult(_ sender: UIButton) {
-        //playSound()
-        displayResult.text = "0"
-        previousNum = 0
-        currentNumber = 0
-        preTag = "+"
-        decimal = false
+        KeySound()
+        // inicializar todas as variáveis
+        HelperClearDisplay()
     }
     
   
+    
+    func HelperClearDisplay(){
+        displayResult.text = "0"
+        formerNumber = 0
+        actualNumber = 0
+        prevOperation="="
+    }
+    
+    
+    
+    // Função responsável pelo calculo
     @IBAction func Calculate(_ sender: UIButton) {
         
-       // playSound()
-        if previousNum==0 {
-            previousNum = Double(displayResult.text!) ?? 0
-            decimal = false
-        }
+       KeySound()
+        
+        let op=sender.titleLabel?.text
+        
+        // Se o former number for 0 significa que ainda nenhum valor foi gravado
+        if (formerNumber==0) {
+            
+            formerNumber = Double(displayResult.text!) ?? 0
+            displayResult.text=String(op!)
+            prevOperation=String(op!)
+            }
         else{
-           // decimal = true
-            currentNumber = Double(displayResult.text!) ?? 0
-            if preTag == "+"{
-                previousNum += currentNumber
+            actualNumber = Double(displayResult.text!) ?? 0
+            print(actualNumber)
+            // Verificar se a operação é: dividir por 0
+            if(actualNumber==0 && sender.titleLabel?.text=="=" && prevOperation=="/")
+            {
+                // Se se verificar a condição mostrar uma mensagem de erro e limpa o ecra
+                ShowAlertMessage()
+                HelperClearDisplay()
+        
             }
-            else if preTag == "-"{
-                previousNum -= currentNumber
-            }
-            else if preTag == "*"{
-                previousNum *= currentNumber
-            }
-            else if preTag == "/"{
-                previousNum /= currentNumber
+            else{
+                
+                // Operações
+                if (prevOperation == "+" ){
+                    formerNumber += actualNumber
+                }
+                else if prevOperation == "-"{
+                    formerNumber -= actualNumber
+                }
+                else if prevOperation == "*"{
+                    formerNumber *= actualNumber
+                }
+                else if prevOperation == "/"{
+                    formerNumber /= actualNumber
+                }
+               
+                // Mostrar o resultado
+               displayResult.text=String(formerNumber)
+                prevOperation=String(op!)
             }
         }
         
-        if sender.tag == 4{
-            currentNumber = Double(displayResult.text!) ?? 0
-            previousNum = currentNumber/100
-                      decimal = true
-        }
+    }
+    
+    // Dar play no som da tecla
+    func KeySound(){
         
-        if sender.tag == 10 || sender.tag == 4{
-            decimal = true
-            displayResult.text = String(previousNum)
-            previousNum = 0
-            preTag = "+"
+        let path = Bundle.main.path(forResource: "keySound", ofType:"wav")!
+        let url  = URL(fileURLWithPath: path)
+
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player.play()
+        } catch {
+            print("couldn't load file")
         }
-        else{
-            displayResult.text = String(tagList[sender.tag])
-            preTag = tagList[sender.tag]
-        }
+    }
+    
+    
+    // Função com mensagem de erro para quando há uma tentiva de dividir por 0
+    func ShowAlertMessage(){
+     
+        // Alert
+        let alert=UIAlertController(title:"AVISO" ,message: "Não é possível dividir por 0", preferredStyle: UIAlertController.Style.alert
+        )
+        
+        // Adicionar botão OK
+        alert.addAction(UIAlertAction(title:"OK",style: UIAlertAction.Style.default,handler:nil))
+        
+        // Config
+        self.present(alert, animated:true, completion:nil)
     }
     
     
