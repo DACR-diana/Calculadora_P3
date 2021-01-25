@@ -9,7 +9,8 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController{
+
+class ViewController: UIViewController, AVAudioPlayerDelegate{
 
     @IBOutlet weak var displayResult: UILabel!
     
@@ -18,10 +19,11 @@ class ViewController: UIViewController{
     var formerNumber : Double = 0
     var prevOperation="="
     
-    var player = AVAudioPlayer()
+    var player : AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
     }
     
 
@@ -114,15 +116,17 @@ class ViewController: UIViewController{
     // Dar play no som da tecla
     func KeySound(){
         
+        /*
         let path = Bundle.main.path(forResource: "keySound", ofType:"wav")!
         let url  = URL(fileURLWithPath: path)
 
         do {
             player = try AVAudioPlayer(contentsOf: url)
-            player.play()
+            player?.play()
         } catch {
             print("couldn't load file")
         }
+            */
     }
     
     
